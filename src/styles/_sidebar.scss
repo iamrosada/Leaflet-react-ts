@@ -1,0 +1,22 @@
+
+.sidebar {
+  box-sizing: border-box;
+  padding: 2em;
+  width: 35vw;
+}
+
+.sidebar h2,
+.sidebar p,
+.sidebar ul {
+  text-align: left;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar button {
+  width: 100%;
+  font-weight: bold;
+  padding: .8em 1em;
+}
