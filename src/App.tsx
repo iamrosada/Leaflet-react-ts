@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useDispatch, useSelector } from "react-redux";
+import MapComponent from "./components/MapComponent";
+import RouteTable from "./components/RouteTable";
+import { useEffect } from "react";
+import { setSelectedRouteId } from "./reducers/routeReducer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const routes = useSelector((state: any) => state.route.routes);
+  const selectedRouteId = useSelector(
+    (state: any) => state.route.selectedRouteId
+  );
+  const selectedRoute = routes[selectedRouteId];
+  const dispatch = useDispatch();
+  console.log(selectedRoute, "from APP");
+  useEffect(() => {
+    if (selectedRoute && !selectedRoute.polyline) {
+      dispatch({
+        type: "route/fetchPolyline",
+        payload: { routeId: selectedRouteId, markers: selectedRoute.markers },
+      });
+    }
+  }, [dispatch, selectedRoute, selectedRouteId]);
 
+  const handleRowClick = (index: any) => {
+    dispatch(setSelectedRouteId(index));
+  };
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container">
+      <MapComponent selectedRoute={selectedRoute} />
+      <RouteTable
+        routes={routes}
+        selectedRouteId={selectedRouteId}
+        onRowClick={handleRowClick}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;
