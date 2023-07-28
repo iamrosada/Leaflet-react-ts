@@ -14,7 +14,6 @@ const RouteTable = ({ routes, selectedRouteId, onRowClick }: any) => {
     name: `Маршрут №${index + 1}`,
   }));
 
-  console.log(data);
   return (
     <Table
       className="sidebar"
