@@ -1,27 +1,71 @@
-# React + TypeScript + Vite
+# Приложение "Маршруты на карте"
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение "Маршруты на карте" является веб-приложением, которое позволяет пользователям просматривать список маршрутов в виде таблицы и визуализировать выбранный маршрут на карте с помощью полилиний и маркеров. Для реализации использованы библиотеки React, Leaflet,Redux и Ant Design.
 
-Currently, two official plugins are available:
+## Особенности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Отображение таблицы со списком маршрутов на левой стороне экрана.
+- Отображение карты на правой стороне экрана с использованием Leaflet для визуализации выбранного маршрута с помощью полилиний и маркеров.
+- Автоматическое центрирование и масштабирование карты для обзора всего маршрута при выборе маршрута в таблице.
+- Получение и отображение полилиний для выбранных маршрутов с использованием API OSRM (Open Source Routing Machine).
 
-## Expanding the ESLint configuration
+## Установка
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Клонируйте репозиторий:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+git clone https://github.com/iamrosada/Leaflet-react-ts.git
+cd Leaflet-react-ts
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Установите зависимости:
+
+```bash
+npm install
+```
+
+3. Запустите сервер разработки:
+
+```bash
+npm run dev
+```
+
+Приложение должно быть доступно по адресу ` http://localhost:5173/`.
+
+## Использование
+
+1. После запуска приложения на экране отобразится таблица с доступными маршрутами на левой стороне.
+
+2. Щелкните по строке в таблице, чтобы выбрать маршрут. Выбранный маршрут будет подсвечен, и на карте справа будет отображаться соответствующий маршрут с полилиниями и маркерами.
+
+3. Карта автоматически центрируется и масштабируется, чтобы вместить весь маршрут в видимой области.
+
+4. Для просмотра другого маршрута просто выберите другую строку в таблице, и карта будет обновлена соответствующим образом.
+
+## Формат данных
+
+Список маршрутов представлен в массиве `routePoints` внутри компонента `RouteMapScreen`. Каждый маршрут в массиве представлен объектом со следующими свойствами:
+
+- `name`: Название или идентификатор маршрута.
+- `points`: Массив пар координат, представляющих точки маршрута. Каждая пара координат имеет формат `[широта, долгота]`.
+
+Вы можете настраивать список маршрутов, обновляя массив `routePoints` с вашими данными о маршрутах.
+
+## Использование API
+
+Приложение использует API OSRM (версия 5.5.1) для получения полилиний для выбранных маршрутов. Запросы к API выполняются с использованием Fetch API. Функция `fetchRoutePolyline` в компоненте `RouteMapScreen` обрабатывает запросы к API.
+
+## Кредиты
+
+Приложение "Маршруты на карте" создано с использованием следующих библиотек с открытым исходным кодом:
+
+- React - Библиотека JavaScript для создания пользовательских интерфейсов.
+- Leaflet - Библиотека JavaScript с открытым исходным кодом для интерактивных карт.
+- Ant Design - Набор высококачественных компонентов React.
+- TypeScript - Язык программирования TypeScript, добавляющий статическую типизацию к JavaScript.
+
+## Лицензия
+
+Этот проект лицензирован в соответствии с лицензией MIT - см. файл [LICENSE](LICENSE) для получения дополнительных сведений.
+
+---
