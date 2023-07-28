@@ -1,4 +1,7 @@
 @import 'leaflet/dist/leaflet.css';
+@import './_sidebar.scss';
+@import './_container.scss';
+
 * {
   margin: 0;
   padding: 0;
@@ -35,15 +38,9 @@ li {
   border-radius: 2rem;
 }
 
-.cluster-icon {
-  background-color: #333;
-  height: 2em;
-  width: 2em;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  box-shadow: 0 0 0px 5px #fff;
+
+.leaflet-container {
+  width: 65vw;
+  height: 100vh;
+  border-radius: 0px;
 }
