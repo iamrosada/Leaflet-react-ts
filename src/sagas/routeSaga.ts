@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { setPolyline } from "../reducers/routeReducer";
+import { setPolyline } from "@/reducers/routeReducer";
 import { getPolylineFromAPI } from "@/services/routeService";
 
 function* fetchPolyline(action: any) {

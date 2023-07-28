@@ -10,8 +10,9 @@ function App() {
     (state: any) => state.route.selectedRouteId
   );
   const selectedRoute = routes[selectedRouteId];
+  console.log(selectedRoute, "selectedRoute");
   const dispatch = useDispatch();
-  console.log(selectedRoute, "from APP");
+
   useEffect(() => {
     if (selectedRoute && !selectedRoute.polyline) {
       dispatch({
@@ -26,12 +27,12 @@ function App() {
   };
   return (
     <div className="container">
-      <MapComponent selectedRoute={selectedRoute} />
       <RouteTable
         routes={routes}
         selectedRouteId={selectedRouteId}
         onRowClick={handleRowClick}
       />
+      <MapComponent selectedRoute={selectedRoute} />
     </div>
   );
 }

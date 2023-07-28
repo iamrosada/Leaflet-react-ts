@@ -5,7 +5,7 @@ const API_BASE_URL = "http://router.project-osrm.org";
 
 export async function getPolylineFromAPI(markers: number[][]) {
   const profile = "driving";
-  console.log(markers, "markers");
+
   const coordinates = markers
     .map((marker: any) => `${marker[1]},${marker[0]}`)
     .join(";");
