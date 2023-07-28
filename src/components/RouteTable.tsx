@@ -9,6 +9,8 @@ const columns = [
 ];
 
 const RouteTable = ({ routes, selectedRouteId, onRowClick }: any) => {
+  //@ts-ignore
+  //@ts-nocheck
   const data = routes.map((route: any, index: any) => ({
     key: index,
     name: `Маршрут №${index + 1}`,
@@ -19,6 +21,8 @@ const RouteTable = ({ routes, selectedRouteId, onRowClick }: any) => {
       className="sidebar"
       dataSource={data}
       columns={columns}
+      //@ts-ignore
+      //@ts-nocheck
       onRow={(record, rowIndex) => {
         return {
           onClick: () => onRowClick(rowIndex),
