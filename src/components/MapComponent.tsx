@@ -9,11 +9,7 @@ const MapComponent = ({ selectedRoute }: any) => {
   const bounds = boundsMaps(selectedRoute);
 
   return (
-    <MapContainer
-      center={center}
-      zoom={13}
-      style={{ height: "400px", width: "600px" }}
-    >
+    <MapContainer center={center} zoom={8}>
       <MapContent bounds={bounds} />
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       {selectedRoute?.polyline && (
