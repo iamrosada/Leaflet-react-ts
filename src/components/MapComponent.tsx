@@ -1,11 +1,10 @@
 import { MapContainer, TileLayer, Marker, Polyline } from "react-leaflet";
 import MapContent from "@/components/MapContent";
 import boundsMaps from "@/utilities/bounds";
+import centerMaps from "@/utilities/centerMaps";
 
 const MapComponent = ({ selectedRoute }: any) => {
-  const center = selectedRoute?.polyline?.length
-    ? selectedRoute.polyline[0]
-    : [59.84660399, 30.29496392];
+  const center = centerMaps(selectedRoute);
 
   const bounds = boundsMaps(selectedRoute);
 
