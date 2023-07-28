@@ -1,21 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { MapContainer, TileLayer, Marker, Polyline } from "react-leaflet";
 
-import React from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
-
-interface MapComponentProps {
-  routeName?: string;
-  trackPoints?: number[][];
-}
-
-const MapComponent: React.FC<MapComponentProps> = () => {
+const MapComponent = ({ selectedRoute }: any) => {
+  const center = selectedRoute?.polyline?.length
+    ? selectedRoute.polyline[0]
+    : [59.84660399, 30.29496392];
+  console.log("selectedRoute.polyline[0]", selectedRoute);
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      zoom={13}
-      style={{ height: "500px", width: "100%" }}
-    >
+    <MapContainer center={center} zoom={13}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      {selectedRoute?.polyline && (
+        <Polyline positions={selectedRoute.polyline} color="red" />
+      )}
+      {selectedRoute?.markers &&
+        selectedRoute.markers.map((marker: any, index: any) => (
+          <Marker key={index} position={marker} />
+        ))}
     </MapContainer>
   );
 };
