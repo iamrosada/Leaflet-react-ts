@@ -5,6 +5,7 @@ import { getPolylineFromAPI } from "@/services/routeService";
 function* fetchPolyline(action: any) {
   const { routeId, markers } = action.payload;
   try {
+    //@ts-ignore
     const polyline = yield call(getPolylineFromAPI, markers);
 
     yield put(setPolyline({ routeId, polyline }));
