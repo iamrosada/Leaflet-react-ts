@@ -4,13 +4,13 @@ import RouteTable from "./components/RouteTable";
 import { useEffect } from "react";
 import { setSelectedRouteId } from "./reducers/routeReducer";
 
-function App() {
+const App = () => {
   const routes = useSelector((state: any) => state.route.routes);
   const selectedRouteId = useSelector(
     (state: any) => state.route.selectedRouteId
   );
   const selectedRoute = routes[selectedRouteId];
-  console.log(selectedRoute, "selectedRoute");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +35,6 @@ function App() {
       <MapComponent selectedRoute={selectedRoute} />
     </div>
   );
-}
+};
 
 export default App;

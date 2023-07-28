@@ -3,7 +3,7 @@ import decodePolyline from "@/utilities/decodePolyline";
 
 const API_BASE_URL = "http://router.project-osrm.org";
 
-export async function getPolylineFromAPI(markers: number[][]) {
+export const getPolylineFromAPI = async (markers: number[][]) => {
   const profile = "driving";
 
   const coordinates = markers
@@ -32,4 +32,4 @@ export async function getPolylineFromAPI(markers: number[][]) {
     console.error("Error fetching route data:", error);
     return [];
   }
-}
+};

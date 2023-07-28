@@ -1,4 +1,4 @@
-function decodePolyline(encoded: any) {
+const decodePolyline = (encoded: any) => {
   if (!encoded) {
     return [];
   }
@@ -41,6 +41,6 @@ function decodePolyline(encoded: any) {
     poly.push(p);
   }
   return poly;
-}
+};
 
 export default decodePolyline;
